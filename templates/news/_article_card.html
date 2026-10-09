@@ -1,0 +1,10 @@
+﻿{% load static %}
+<div class="article-card">
+    {% if article.image %}
+        <img src="{{ article.image.url }}" alt="{{ article.title }}" class="article-image">
+    {% endif %}
+    <h2><a href="{% url 'news:article_detail' article.pk %}">{{ article.title }}</a></h2>
+    <p class="meta">{{ article.published_at|date:"d/m/Y" }} | {{ article.author.name }}</p>
+    <p>{{ article.content|truncatewords:30 }}</p>
+    <a href="{% url 'news:article_detail' article.pk %}" class="read-more">Read more</a>
+</div>

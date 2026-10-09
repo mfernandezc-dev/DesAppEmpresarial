@@ -1,0 +1,12 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}{{ category.name }} - News Portal{% endblock %}
+
+{% block content %}
+    <h1>{{ category.name }}</h1>
+    {% for article in articles %}
+        {% include 'news/_article_card.html' %}
+    {% empty %}
+        <p>No articles in this category.</p>
+    {% endfor %}
+{% endblock %}
