@@ -7,6 +7,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'slug')
     search_fields = ('name', 'slug')
     list_filter = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
 
 
 @admin.register(Author)
@@ -22,4 +23,5 @@ class ArticleAdmin(admin.ModelAdmin):
     search_fields = ('title', 'content', 'author__name')
     list_filter = ('author', 'categories', 'published_at')
     filter_horizontal = ('categories',)
-    readonly_fields = ('created_at', 'updated_at', 'published_at')
+    prepopulated_fields = {'slug': ('title',)}
+    readonly_fields = ('published_at',)
