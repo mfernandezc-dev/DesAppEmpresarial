@@ -3,10 +3,13 @@
 {% block title %}{{ category.name }} - News Portal{% endblock %}
 
 {% block content %}
-    <h1>{{ category.name }}</h1>
+    <h1 class="page-title">Categoría: {{ category.name }}</h1>
     {% for article in articles %}
         {% include 'news/_article_card.html' %}
     {% empty %}
-        <p>No articles in this category.</p>
+        <div class="empty-state">
+            <i class="fas fa-folder-open"></i>
+            <p>No hay noticias en esta categoría.</p>
+        </div>
     {% endfor %}
 {% endblock %}
